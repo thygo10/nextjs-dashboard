@@ -3,9 +3,11 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from './ui/fonts';
 import Image from 'next/image';
+import { fetchRevenue, fetchLatestInvoices, fetchCardData } from './lib/data';
 
 export default function Page() {
   return (
+    
     <main className="flex flex-col min-h-screen flex-col items-center p-6 bg-white">
       {/* Header */}
       <div className="w-full flex h-20 md:h-52 items-end bg-blue-500 p-4 rounded-lg">
