@@ -3,7 +3,7 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from './ui/fonts';
 import Image from 'next/image';
-import { fetchRevenue, fetchLatestInvoices, fetchCardData } from './lib/data';
+import { fetchRevenue, fetchLatestInvoices } from './lib/data';
 
 export default function Page() {
   return (
