@@ -5,9 +5,22 @@ import { CreateInvoice } from '@/app/ui/invoices/buttons'; // Importa o botão p
 import { lusitana } from '@/app/ui/fonts'; // Importa a fonte personalizada "lusitana"
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons'; // Importa um esqueleto de carregamento para a tabela
 import { Suspense } from 'react'; // Importa o componente Suspense do React, usado para carregamento assíncrono
+import { fetchInvoicesPages } from '@/app/lib/data';
 
 // Define e exporta a função assíncrona Page, que representa a página de faturas
-export default async function Page() {
+export default async function Page(props:{
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchInvoicesPages(query);
+
+
   return (
     <div className="w-full"> {/* Container principal que ocupa toda a largura */}
       
@@ -23,14 +36,14 @@ export default async function Page() {
       </div>
       
       {/* Seção da tabela de faturas */}
-      {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> */}
+       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> 
         {/* O Suspense renderiza um esqueleto enquanto os dados são carregados */}
-        {/* <Table query={query} currentPage={currentPage} /> */} {/* Componente da tabela de faturas */}
-      {/* </Suspense> */}
+        { <Table query={query} currentPage={currentPage} /> } {/* Componente da tabela de faturas */}
+      </Suspense> 
       
       {/* Seção da paginação */}
       <div className="mt-5 flex w-full justify-center"> {/* Margem superior e centralização da paginação */}
-        {/* <Pagination totalPages={totalPages} /> */} {/* Componente de paginação */}
+        {<Pagination totalPages={totalPages} />} {/* Componente de paginação */}
       </div>
     </div>
   );
