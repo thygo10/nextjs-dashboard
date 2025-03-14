@@ -86,3 +86,74 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export type Parking = {
+  space: number;
+  is_occupied: boolean;
+};
+
+export type State = {
+  errors?: {
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
+    plate?: string[];
+  };
+  message?: string | null;
+};
+
+export type InvoiceWithParking = {
+  id: string;
+  customer_id: string;
+  amount: number;
+  status: 'pending' | 'paid';
+  date: string;
+  space: number;
+  plate: string;
+};
+
+export type ParkingSpace = {
+  space: number;
+  is_occupied: boolean;
+};
+
+export type ParkingSpaceWithInvoice = {
+  space: number;
+  is_occupied: boolean;
+  invoice_id: string | null;
+};
+export type ParkingSpaceWithInvoiceAndCustomer = {
+  space: number;
+  is_occupied: boolean;
+  invoice_id: string | null;
+  customer_id: string | null;
+};
+
+
+export type ParkingSpaceWithInvoiceAndCustomerAndPlate = {
+  space: number;
+  is_occupied: boolean;
+  invoice_id: string | null;
+  customer_id: string | null;
+  plate: string | null;
+};
+export type ParkingSpaceWithInvoiceAndCustomerAndPlateAndDate = {
+  space: number;
+  is_occupied: boolean;
+  invoice_id: string | null;
+  customer_id: string | null;
+  plate: string | null;
+  date: string | null;
+};
+
+
+export type ParkingSpaceWithInvoiceAndCustomerAndPlateAndDateAndAmount = {
+  space: number;
+  is_occupied: boolean;
+  invoice_id: string | null;
+  customer_id: string | null;
+  plate: string | null;
+  date: string | null;
+  amount: number | null;
+};
+

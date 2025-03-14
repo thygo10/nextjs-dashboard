@@ -118,3 +118,22 @@ export async function createInvoice(prevState: State, formData: FormData) {
   redirect('/dashboard/invoices');
 }
 
+export async function fetchCustomers() {
+  try {
+    const data = await sql`SELECT id, name FROM customers`;
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch customers.');
+  }
+}
+
+export async function fetchParkingSpaces() {
+  try {
+    const data = await sql`SELECT space, is_occupied FROM parking`;
+    return data;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch parking spaces.');
+  }
+}

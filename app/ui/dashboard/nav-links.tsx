@@ -5,7 +5,10 @@ import clsx from 'clsx';
 import {
   UserGroupIcon,
   HomeIcon,
-  DocumentDuplicateIcon,
+  BookOpenIcon,
+  ShoppingBagIcon,
+  ShoppingCartIcon,
+  ArrowsUpDownIcon
 } from '@heroicons/react/24/outline';
 
 import Link from 'next/link';
@@ -15,11 +18,26 @@ import Link from 'next/link';
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
-    name: 'Invoices',
+    name: 'Vendas',
     href: '/dashboard/invoices',
-    icon: DocumentDuplicateIcon,
+    icon: ShoppingBagIcon,
   },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Clientes', 
+    href: '/dashboard/customers', 
+    icon: UserGroupIcon },
+    ,
+  { name: 'Relatórios', 
+    href: '/dashboard/customers', 
+    icon: BookOpenIcon },
+    ,
+    { name: 'Nova venda', 
+      href: '/dashboard/invoices/create', 
+      icon: ShoppingCartIcon }
+      ,
+    { name: 'Status pátio', 
+      href: '/dashboard/parking', 
+      icon: ArrowsUpDownIcon }
+    
 ];
 
 export default function NavLinks() {
